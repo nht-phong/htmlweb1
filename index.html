@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dinh Nhat Phong - My Introduction</title>
+
+  <!-- ============================================================
+       SIMPLE STYLE (all in one file for a beginner project)
+       ============================================================ -->
+  <style>
+    /* --- Basic reset --- */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.6;
+      color: #1b2a3a;
+      background-color: #f4f8fd;
+    }
+
+    /* --- Navigation bar --- */
+    header {
+      background-color: #1565c0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    }
+
+    nav {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 14px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    nav .logo {
+      color: #ffffff;
+      font-size: 20px;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    nav ul li a {
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 14px;
+      border-radius: 20px;
+      font-size: 15px;
+      transition: background-color 0.3s;
+    }
+
+    nav ul li a:hover {
+      background-color: #0d47a1;
+    }
+
+    /* --- General section spacing --- */
+    section {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 50px 20px;
+    }
+
+    section h2 {
+      font-size: 28px;
+      color: #0d47a1;
+      margin-bottom: 8px;
+    }
+
+    section h2::after {
+      content: "";
+      display: block;
+      width: 60px;
+      height: 4px;
+      background-color: #42a5f5;
+      border-radius: 2px;
+      margin-top: 8px;
+    }
+
+    section p {
+      margin-top: 16px;
+    }
+
+    /* --- Images --- */
+    img {
+      max-width: 100%;
+      display: block;
+      border-radius: 10px;
+    }
+
+    .photo {
+      border: 4px solid #ffffff;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    /* --- HOME / HERO --- */
+    #home {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+      flex-wrap: wrap;
+      padding-top: 60px;
+      padding-bottom: 60px;
+    }
+
+    #home .hero-text {
+      flex: 1 1 340px;
+    }
+
+    #home .hero-text h1 {
+      font-size: 40px;
+      color: #0d47a1;
+      line-height: 1.2;
+    }
+
+    #home .hero-text h1 span {
+      display: block;
+      font-size: 18px;
+      color: #546e7a;
+      font-weight: normal;
+      margin-top: 5px;
+    }
+
+    #home .hero-text p {
+      margin-top: 18px;
+    }
+
+    #home .hero-photo {
+      flex: 0 0 260px;
+    }
+
+    #home .hero-photo img {
+      width: 260px;
+      height: 260px;
+      object-fit: cover;
+    }
+
+    /* --- Buttons --- */
+    .button {
+      display: inline-block;
+      margin-top: 22px;
+      padding: 12px 26px;
+      background-color: #1565c0;
+      color: #ffffff;
+      text-decoration: none;
+      border-radius: 25px;
+      font-weight: bold;
+      transition: background-color 0.3s;
+    }
+
+    .button:hover {
+      background-color: #0d47a1;
+    }
+
+    /* --- White card block --- */
+    .card {
+      background-color: #ffffff;
+      border-radius: 12px;
+      padding: 26px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+    }
+
+    /* --- Two column layout (text + image) --- */
+    .split {
+      display: flex;
+      gap: 34px;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-top: 26px;
+    }
+
+    .split .text {
+      flex: 1 1 340px;
+    }
+
+    .split .picture {
+      flex: 0 0 300px;
+    }
+
+    /* --- Small info list --- */
+    ul.info-list {
+      list-style: none;
+      margin-top: 18px;
+    }
+
+    ul.info-list li {
+      padding: 10px 0 10px 30px;
+      border-bottom: 1px solid #e3eef8;
+      position: relative;
+    }
+
+    ul.info-list li::before {
+      content: "✔";
+      color: #42a5f5;
+      position: absolute;
+      left: 0;
+      font-weight: bold;
+    }
+
+    ul.info-list li strong {
+      color: #0d47a1;
+    }
+
+    /* --- GALLERY GRID --- */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 16px;
+      margin-top: 26px;
+    }
+
+    .gallery figure {
+      background-color: #ffffff;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+      transition: transform 0.3s;
+    }
+
+    .gallery figure:hover {
+      transform: translateY(-5px);
+    }
+
+    .gallery img {
+      width: 100%;
+      height: 170px;
+      object-fit: cover;
+      border-radius: 0;
+    }
+
+    .gallery figcaption {
+      padding: 12px;
+      font-size: 14px;
+      color: #455a64;
+      text-align: center;
+    }
+
+    /* --- CONTACT --- */
+    .contact-wrap {
+      display: flex;
+      gap: 34px;
+      flex-wrap: wrap;
+      margin-top: 26px;
+    }
+
+    .contact-wrap .contact-info {
+      flex: 1 1 300px;
+    }
+
+    .contact-wrap .contact-photo {
+      flex: 0 0 280px;
+    }
+
+    table.contact-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 18px;
+    }
+
+    table.contact-table td {
+      padding: 12px 10px;
+      border-bottom: 1px solid #e3eef8;
+      vertical-align: top;
+    }
+
+    table.contact-table td:first-child {
+      font-weight: bold;
+      color: #0d47a1;
+      width: 120px;
+    }
+
+    .note {
+      margin-top: 18px;
+      padding: 14px 18px;
+      background-color: #e3f2fd;
+      border-left: 5px solid #42a5f5;
+      border-radius: 6px;
+      font-size: 14px;
+      color: #37474f;
+    }
+
+    /* --- FOOTER --- */
+    footer {
+      background-color: #0d47a1;
+      color: #cfe4ff;
+      margin-top: 40px;
+    }
+
+    .footer-inner {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 30px 20px;
+      display: flex;
+      gap: 24px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .footer-inner img {
+      width: 90px;
+      height: 90px;
+      object-fit: cover;
+      border: 3px solid #42a5f5;
+    }
+
+    .footer-inner p {
+      font-size: 14px;
+    }
+
+    .footer-inner .copy {
+      border-top: 1px solid #1e5faa;
+      margin-top: 14px;
+      padding-top: 14px;
+      font-size: 13px;
+      color: #9dc2ea;
+    }
+
+    /* --- Simple phone/screen adjustment --- */
+    @media (max-width: 640px) {
+      #home .hero-text h1 {
+        font-size: 30px;
+      }
+
+      #home .hero-photo,
+      #home .hero-photo img {
+        width: 100%;
+        flex-basis: 100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ============================================================
+       1. NAVIGATION BAR
+       ============================================================ -->
+  <header>
+    <nav>
+      <div class="logo">DINH NHAT PHONG</div>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About Me</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- ============================================================
+       2. HOME / INTRO   (IMAGE 1: main profile photo)
+       ============================================================ -->
+  <section id="home">
+    <div class="hero-text">
+      <h1>
+        Hello, I am Dinh Nhat Phong
+        <span>Information Technology Graduate | AI &amp; English</span>
+      </h1>
+      <p>
+        Welcome to my personal introduction page. I was born in 2003 and I
+        graduated from Hanoi University (HANU) in 2026 with a major in
+        Information Technology. I am passionate about technology, especially
+        Artificial Intelligence, and I enjoy learning new things every day.
+      </p>
+      <a class="button" href="#about">Learn more about me</a>
+    </div>
+
+    <div class="hero-photo">
+      <!-- IMAGE 1 of 10 -->
+      <img class="photo" src="images.jpg"
+           alt="Portrait photo of Dinh Nhat Phong">
+    </div>
+  </section>
+
+  <!-- ============================================================
+       3. ABOUT ME   (IMAGE 2)
+       ============================================================ -->
+  <section id="about">
+    <h2>About Me</h2>
+    <div class="split">
+      <div class="text">
+        <p>
+          My full name is <strong>Dinh Nhat Phong</strong>, and I was born in
+          <strong>2003</strong>. I am a friendly, curious and hard-working
+          person who loves to explore how technology can make life better.
+          During my years at university I learned how to study on my own,
+          work in a team and solve problems step by step.
+        </p>
+        <p>
+          Besides Information Technology, I also have good knowledge of
+          <strong>English</strong> and <strong>Artificial Intelligence</strong>.
+          These two subjects help me read technical documents, communicate
+          with people from other countries and understand new AI tools quickly.
+        </p>
+        <ul class="info-list">
+          <li><strong>Full name:</strong> Dinh Nhat Phong</li>
+          <li><strong>Year of birth:</strong> 2003</li>
+          <li><strong>Major:</strong> Information Technology</li>
+          <li><strong>University:</strong> Hanoi University (HANU)</li>
+          <li><strong>Graduated:</strong> 2026</li>
+          <li><strong>Strong points:</strong> English, Artificial Intelligence</li>
+        </ul>
+      </div>
+
+      <div class="picture">
+        <!-- IMAGE 2 of 10 -->
+        <img class="photo" src="images.jpg"
+             alt="Picture representing Dinh Nhat Phong's personal story"
+             style="height: 340px; object-fit: cover;">
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       4. EDUCATION   (IMAGE 3)
+       ============================================================ -->
+  <section id="education">
+    <h2>Education</h2>
+    <div class="card">
+      <div class="split">
+        <div class="text">
+          <p>
+            I studied at <strong>Hanoi University (HANU)</strong>, one of the
+            well-known universities in Hanoi, Vietnam. My major was
+            <strong>Information Technology</strong>. I started my studies and
+            finished them in <strong>2026</strong>.
+          </p>
+          <p>
+            At university I studied many subjects such as programming,
+            databases, computer networks, web development and the basics of
+            Artificial Intelligence. I also practiced presentation and
+            teamwork skills, which helped me improve my English as well.
+          </p>
+          <ul class="info-list">
+            <li><strong>University:</strong> Hanoi University (HANU)</li>
+            <li><strong>Major:</strong> Information Technology</li>
+            <li><strong>Graduation year:</strong> 2026</li>
+            <li><strong>Main skills learned:</strong> Programming, Databases, AI basics</li>
+          </ul>
+        </div>
+
+        <div class="picture">
+          <!-- IMAGE 3 of 10 -->
+          <img class="photo" src="images.jpg"
+               alt="Picture representing university study and education"
+               style="height: 300px; object-fit: cover;">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       5. GALLERY   (IMAGES 4, 5, 6, 7, 8)
+       ============================================================ -->
+  <section id="gallery">
+    <h2>Gallery</h2>
+    <p>
+      Here are some pictures from my learning journey and my daily life.
+      Each photo is a small memory that I would like to share with you.
+    </p>
+
+    <div class="gallery">
+      <!-- IMAGE 4 of 10 -->
+      <figure>
+        <img src="images.jpg" alt="Photo 1 - My university days">
+        <figcaption>My university days</figcaption>
+      </figure>
+
+      <!-- IMAGE 5 of 10 -->
+      <figure>
+        <img src="images.jpg" alt="Photo 2 - Studying Information Technology">
+        <figcaption>Studying Information Technology</figcaption>
+      </figure>
+
+      <!-- IMAGE 6 of 10 -->
+      <figure>
+        <img src="images.jpg" alt="Photo 3 - Learning about Artificial Intelligence">
+        <figcaption>Learning about AI</figcaption>
+      </figure>
+
+      <!-- IMAGE 7 of 10 -->
+      <figure>
+        <img src="images.jpg" alt="Photo 4 - English practice and presentation">
+        <figcaption>English practice</figcaption>
+      </figure>
+
+      <!-- IMAGE 8 of 10 -->
+      <figure>
+        <img src="images.jpg" alt="Photo 5 - Graduation year 2026">
+        <figcaption>Graduation 2026</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       6. CONTACT   (IMAGE 9)
+       ============================================================ -->
+  <section id="contact">
+    <h2>Contact</h2>
+    <p>
+      Thank you for visiting my page. If you would like to talk about
+      technology, AI or study, please feel free to contact me.
+    </p>
+
+    <div class="contact-wrap">
+      <div class="contact-info">
+        <table class="contact-table">
+          <tr>
+            <td>Name</td>
+            <td>Dinh Nhat Phong</td>
+          </tr>
+          <tr>
+            <td>Email</td>
+            <td>example@email.com</td>
+          </tr>
+          <tr>
+            <td>Phone</td>
+            <td>+84 000 000 000</td>
+          </tr>
+          <tr>
+            <td>Location</td>
+            <td>Hanoi, Vietnam</td>
+          </tr>
+          <tr>
+            <td>Facebook</td>
+            <td>facebook.com/your-profile</td>
+          </tr>
+        </table>
+
+        <div class="note">
+          <strong>Note:</strong> The contact information above is a
+          placeholder. Please replace it with your real email, phone number
+          and social links before submitting this project.
+        </div>
+      </div>
+
+      <div class="contact-photo">
+        <!-- IMAGE 9 of 10 -->
+        <img class="photo" src="point.jpg"
+             alt="Picture of Dinh Nhat Phong in the contact section"
+             style="height: 280px; object-fit: cover;">
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       7. FOOTER   (IMAGE 10)
+       ============================================================ -->
+  <footer>
+    <div class="footer-inner">
+      <div>
+        <!-- IMAGE 10 of 10 -->
+        <img src="images.jpg" alt="Small footer photo">
+      </div>
+      <div>
+        <p><strong>Dinh Nhat Phong</strong> — Introduction Website</p>
+        <p>Information Technology | HANU Class of 2026</p>
+        <p>Created for my HTML class project.</p>
+        <p class="copy">&copy; 2026 Dinh Nhat Phong. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
